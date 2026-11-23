@@ -8,7 +8,7 @@ rm -f s905.img
 mkdir -p files mnt
 
 # 定义大小
-truncate -s "1280M" "${IMAGE_NAME}"
+truncate -s "1560M" "${IMAGE_NAME}"
 
 # DOS MBR分区表
 parted -s "${IMAGE_NAME}" mklabel msdos
