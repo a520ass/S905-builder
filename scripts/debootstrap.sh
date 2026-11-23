@@ -77,18 +77,12 @@ EOF
 cp -a configs/rc.local ${CHROOT}/etc/rc.local
 chmod +x ${CHROOT}/etc/rc.local
 
-# install targz kernel
-wget https://github.com/a520ass/Actions-build/releases/download/Linux_Kernel_2026.11.11-0927/linux-7.1.3-msm8937-arm64.tar.gz
-tar -xzf linux-7.1.3-msm8937-arm64.tar.gz -C ${CHROOT}/root/ 2>/dev/null
-mkdir -p ${CHROOT}/boot/
-cp -rfpa ${CHROOT}/root/boot/* ${CHROOT}/boot/
-mkdir -p ${CHROOT}/usr/lib/modules/
-cp -rfpa ${CHROOT}/root/lib/modules/* ${CHROOT}/usr/lib/modules/
-rm -rf ${CHROOT}/boot/vmlinux*
-rm -rf ${CHROOT}/boot/System.map*
-find ${CHROOT}/boot/dtbs/  -type f ! -name 'msm*.dtb' -delete
-rm -rf ${CHROOT}/root/boot
-rm -rf ${CHROOT}/root/lib
+# install kernel
+wget https://github.com/a520ass/Actions-build/releases/download/Armbian_Aml_TVBOX_GF_MESON64_V26_2026.11.09-1724/linux-image-edge-meson64_26.11.0_arm64__7.3.3-Sd50d-D68f5-Pcf4c-Cff91-Hb9b6-HK01ba-Ve377-B0577-R448a.deb
+mv linux-image-edge-meson64_26.11.0_arm64__7.3.3-Sd50d-D68f5-Pcf4c-Cff91-Hb9b6-HK01ba-Ve377-B0577-R448a.deb linux-image-7.3.3-edge-meson64.deb
+./scripts/deb2targz.sh linux-image-7.3.3-edge-meson64.deb
+tar -xzf 7.3.3-edge-meson64.tar.gz -C ${CHROOT}
+
 
 mkdir -p ${CHROOT}/boot/extlinux
 cp configs/extlinux.conf ${CHROOT}/boot/extlinux
