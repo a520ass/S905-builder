@@ -26,4 +26,4 @@ mkdir -p mnt/boot
 mount "${LOOP_DEVICE}p1" mnt/boot
 tar xpf rootfs.tgz -C mnt --exclude='./root/*' --exclude='./dev/*'
 
-umount mnt
+umount -R  mnt
