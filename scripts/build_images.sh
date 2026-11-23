@@ -27,3 +27,6 @@ mount "${LOOP_DEVICE}p1" mnt/boot
 tar xpf rootfs.tgz -C mnt --exclude='./root/*' --exclude='./dev/*'
 
 umount -R  mnt
+losetup -D
+# 移动到最终目录
+mv "${IMAGE_NAME}" files
