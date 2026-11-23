@@ -1,0 +1,17 @@
+[connection]
+id=eth0net
+uuid=1ed9daa8-f628-4033-b3c4-f91279439999
+type=ethernet
+interface-name=eth0
+permissions=
+
+[ethernet]
+
+[ipv4]
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto
+
+[proxy]
