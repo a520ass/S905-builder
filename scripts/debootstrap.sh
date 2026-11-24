@@ -48,6 +48,10 @@ chmod 0600 ${CHROOT}/etc/NetworkManager/system-connections/*
 cp configs/99-custom.conf ${CHROOT}/etc/NetworkManager/conf.d/
 mkdir -p ${CHROOT}/etc/systemd/network
 cp configs/*.network ${CHROOT}/etc/systemd/network
+# install emmc sh
+cp configs/install-s905x-ext4.sh ${CHROOT}/root/
+cp configs/fstab.template ${CHROOT}/root/
+chmod 0755 ${CHROOT}/root/*.sh
 
 # chroot setup
 cp scripts/setup.sh ${CHROOT}
