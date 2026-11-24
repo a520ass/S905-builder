@@ -37,7 +37,8 @@ apt install -qqy --no-install-recommends \
     bc \
     iw \
     rfkill \
-    initramfs-tools
+    initramfs-tools \
+    python3-pip
 
 # install deb
 #dpkg -i /root/*.deb
