@@ -22,7 +22,8 @@ apt install -qqy --no-install-recommends \
     libc6-dev \
     linux-libc-dev \
     locales \
-    netcat-openbsd \
+    netcat-traditional \
+    systemd-resolved \
     network-manager \
     openssh-server \
     sudo \

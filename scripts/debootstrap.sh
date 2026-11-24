@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 CHROOT=${CHROOT=$(pwd)/rootfs}
-RELEASE=${RELEASE=resolute}
+RELEASE=${RELEASE=forky}
 HOST_NAME=${HOST_NAME=s905}
 
 rm -rf ${CHROOT}
@@ -10,14 +10,13 @@ rm -rf ${CHROOT}
 echo "Using mmdebstrap for fast bootstrap..."
 mmdebstrap --arch=arm64 \
     --include=systemd,udev,dbus,apt,wget,ca-certificates \
-    --keyring=/usr/share/keyrings/ubuntu-archive-keyring.gpg \
-    ${RELEASE} ${CHROOT} http://ports.ubuntu.com/ubuntu-ports
+    --keyring=/usr/share/keyrings/debian-archive-keyring.gpg \
+    ${RELEASE} ${CHROOT}
 
 cat << EOF > ${CHROOT}/etc/apt/sources.list
-deb http://ports.ubuntu.com/ubuntu-ports ${RELEASE} main restricted universe multiverse
-deb http://ports.ubuntu.com/ubuntu-ports ${RELEASE}-updates main restricted universe multiverse
-deb http://ports.ubuntu.com/ubuntu-ports ${RELEASE}-security main restricted universe multiverse
-deb http://ports.ubuntu.com/ubuntu-ports ${RELEASE}-backports main restricted universe multiverse
+deb http://deb.debian.org/debian ${RELEASE} main contrib non-free-firmware
+deb http://deb.debian.org/debian-security/ ${RELEASE}-security main contrib non-free-firmware
+deb http://deb.debian.org/debian ${RELEASE}-updates main contrib non-free-firmware
 EOF
 
 # Speed up apt
