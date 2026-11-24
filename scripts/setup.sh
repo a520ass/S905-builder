@@ -7,8 +7,8 @@ DEBCONF_NONINTERACTIVE_SEEN=true
 echo 'force-confdef' >> /etc/dpkg/dpkg.cfg
 echo 'force-confold' >> /etc/dpkg/dpkg.cfg
 
-echo 'tzdata tzdata/Areas select Etc' | debconf-set-selections
-echo 'tzdata tzdata/Zones/Etc select UTC' | debconf-set-selections
+echo 'tzdata tzdata/Areas select Asia' | debconf-set-selections
+echo 'tzdata tzdata/Zones/Asia select Shanghai' | debconf-set-selections
 echo "locales locales/default_environment_locale select en_US.UTF-8" | debconf-set-selections
 echo "locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8" | debconf-set-selections
 rm -f "/etc/locale.gen"
@@ -67,8 +67,9 @@ usermod -aG sudo user
 cat <<EOF >>/etc/bash.bashrc
 
 alias ls='ls --color=auto'
-alias ll='ls --color=auto -lhA'
-alias l='ls --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 EOF
 
