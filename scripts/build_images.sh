@@ -24,7 +24,7 @@ mkfs.ext4 -L SYSROOT -m 0 -U "86c05746-759e-4d3e-98c1-7eded328b685" "${LOOP_DEVI
 mount "${LOOP_DEVICE}p2" mnt
 mkdir -p mnt/boot
 mount "${LOOP_DEVICE}p1" mnt/boot
-tar xpf rootfs.tgz -C mnt --exclude='./root/*' --exclude='./dev/*'
+tar xpf rootfs.tgz -C mnt --exclude='./dev/*'
 
 umount -R  mnt
 losetup -D
